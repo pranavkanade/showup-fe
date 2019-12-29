@@ -1,0 +1,5 @@
+@import '../../static/styles/global.scss';
+
+.container {
+  @extend %container;
+}

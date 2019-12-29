@@ -1,0 +1,38 @@
+// font-family: 'Heebo', sans-serif;
+// font-family: 'Noto Sans SC', sans-serif;
+// font-family: 'Nunito Sans', sans-serif;
+$headingType: 'Heebo', sans-serif;
+$bodyType: 'Noto Sans SC', sans-serif;
+$actionType: 'Nunito Sans', sans-serif;
+
+// font-size
+$heading-1: 36px;
+$heading-2: 24px;
+$body-1: 16px;
+$body-2: 12px;
+$action-1: 18px;
+$action-2: 14px;
+
+// font-weight
+$bolder: 900;
+$bold: 700;
+$regular: 500;
+$normal: 400;
+$light: 300;
+
+* {
+  font-family: $bodyType;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $headingType;
+  margin: 0;
+}
+
+p {
+  font-family: $bodyType;
+  margin: 0;
+}
