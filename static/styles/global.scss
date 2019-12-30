@@ -1,14 +1,19 @@
+// @import '../../node_modules/antd/dist/antd.css';
 @import './typography.scss';
 
 // Shadow
+@mixin colored-shadow($color-name: #000000) {
+  box-shadow: 0px 10px 30px #{$color-name}9a;
+}
+
 %shadow-y {
   /* default-y */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 30px #0000001a;
 }
 
 %shadow-x {
   /* default-x */
-  box-shadow: 2px 0px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0px 30px #0000001a;
 }
 
 %container {

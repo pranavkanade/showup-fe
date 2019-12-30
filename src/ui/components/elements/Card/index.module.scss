@@ -1,0 +1,29 @@
+@import '../../../../../static/styles/global.scss';
+@import '../../../../../static/styles/colors.scss';
+
+.card {
+  padding: 1rem;
+  border-radius: 5px;
+  @extend %shadow-y;
+}
+
+.red {
+  background: $red-primary;
+  @include colored-shadow($red-primary);
+}
+.blue {
+  background: $blue-primary;
+  @include colored-shadow($blue-primary);
+}
+.green {
+  background: $green-primary;
+  @include colored-shadow($green-primary);
+}
+.black {
+  background: $black-primary;
+  @include colored-shadow($black-primary);
+}
+.grey {
+  background: $grey-1;
+  @include colored-shadow($grey-1);
+}
