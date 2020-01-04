@@ -1,0 +1,11 @@
+@import '../../../../../../static/styles/colors.scss';
+
+.body {
+  width: 400px;
+}
+
+.centered {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

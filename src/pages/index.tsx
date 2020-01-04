@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 
-const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
-  <h1>Hello world!</h1>
-);
+import HomePlugin from '../ui/plugins/home';
+
+const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => <HomePlugin />;
 
 Home.getInitialProps = async ({ req }) => {
   const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent;
