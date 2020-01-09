@@ -3,8 +3,13 @@ import React, { Component, FormEvent } from 'react';
 import { Form, Icon, Input, Button, Select, DatePicker } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 import Card from '../../../../components/elements/Card';
+import { Moment } from 'moment';
 
 import styles from './index.module.scss';
+import {
+  createLeadDto,
+  createNewLead
+} from '../../../../../requests/lead/lead.requests';
 
 export const formName = 'hero-form';
 
@@ -14,11 +19,31 @@ const { Option } = Select;
 class HeroForm extends Component<FormComponentProps> {
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    this.props.form.validateFields((err: object, values: object) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
+    const values = this.props.form.validateFields(
+      (
+        err: object,
+        values: { title: string; tags: string[]; city: string; when: Moment[] }
+      ) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
+          const { title, tags, city, when } = values;
+          let startDate = null;
+          let endDate = null;
+          if (when.length === 2) {
+            startDate = when[0].toDate() || null;
+            endDate = when[1].toDate() || null;
+          }
+          const data: createLeadDto = {
+            title,
+            city,
+            tags,
+            startDate,
+            endDate
+          };
+          const response = createNewLead(data);
+        }
       }
-    });
+    );
   };
 
   render() {
@@ -66,9 +91,11 @@ class HeroForm extends Component<FormComponentProps> {
                   placeholder="Climate Change"
                   size="large"
                 >
-                  <Option value="1">Climate Change</Option>
-                  <Option value="2">Women's Rights</Option>
-                  <Option value="3">Government Policies</Option>
+                  <Option value="climate change">Climate Change</Option>
+                  <Option value="women's rights">Women's Rights</Option>
+                  <Option value="government policies">
+                    Government Policies
+                  </Option>
                 </Select>
               )}
             </Form.Item>
@@ -103,7 +130,6 @@ class HeroForm extends Component<FormComponentProps> {
                 ]
               })(
                 <RangePicker
-                  showTime
                   format="YYYY-MM-DD HH:mm:ss"
                   size="large"
                   style={{
